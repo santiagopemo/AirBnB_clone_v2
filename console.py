@@ -227,18 +227,16 @@ class HBNBCommand(cmd.Cmd):
         # print(print_list)
         if not line:
             o = storage.all()
-            print([o[k].__str__() for k in o])
+            for k in o:
+                print(o[k].__str__())
             return
-        try:
-            args = line.split(" ")
-            if args[0] not in self.classes:
-                raise NameError()
-
-            o = storage.all(eval(args[0]))
-            print([o[k].__str__() for k in o])
-
-        except NameError:
+        args = line.split(" ")
+        if args[0] not in self.classes:
             print("** class doesn't exist **")
+            return
+        o = storage.all(eval(args[0]))
+        for k in o:
+            print(o[k].__str__())
 
     def help_all(self):
         """ Help information for the all command """
