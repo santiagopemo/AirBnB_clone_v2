@@ -3,7 +3,7 @@
 import cmd
 import sys
 from models.base_model import BaseModel
-from models.__init__ import storage
+from models import storage
 from models.user import User
 from models.place import Place
 from models.state import State
@@ -208,23 +208,35 @@ class HBNBCommand(cmd.Cmd):
         print("Destroys an individual instance of a class")
         print("[Usage]: destroy <className> <objectId>\n")
 
-    def do_all(self, args):
+    def do_all(self, line):
         """ Shows all objects, or all objects of a class"""
-        print_list = []
+        # print_list = []
 
-        if args:
-            args = args.split(' ')[0]  # remove possible trailing args
-            if args not in HBNBCommand.classes:
-                print("** class doesn't exist **")
-                return
-            for k, v in storage._FileStorage__objects.items():
-                if k.split('.')[0] == args:
-                    print_list.append(str(v))
-        else:
-            for k, v in storage._FileStorage__objects.items():
-                print_list.append(str(v))
+        # if args:
+        #     args = args.split(' ')[0]  # remove possible trailing args
+        #     if args not in HBNBCommand.classes:
+        #         print("** class doesn't exist **")
+        #         return
+        #     for k, v in storage.all().items():
+        #         if k.split('.')[0] == args:
+        #             print_list.append(str(v))
+        # else:
+        #     for k, v in storage.all().items():
+        #         print_list.append(str(v))
 
-        print(print_list)
+        # print(print_list)
+        if not line:
+            o = storage.all()
+            for k in o:
+                print(o[k].__str__())
+            return
+        args = line.split(" ")
+        if args[0] not in self.classes:
+            print("** class doesn't exist **")
+            return
+        o = storage.all(eval(args[0]))
+        for k in o:
+            print(o[k].__str__())
 
     def help_all(self):
         """ Help information for the all command """
