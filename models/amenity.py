@@ -6,6 +6,7 @@ import os
 from models.base_model import BaseModel, Base
 from sqlalchemy import Column, String, ForeignKey
 from sqlalchemy.orm import relationship
+from models.place import Place, place_amenity
 
 
 class Amenity(BaseModel, Base):
