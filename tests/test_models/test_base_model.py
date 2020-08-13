@@ -9,6 +9,7 @@ from models.engine.file_storage import FileStorage
 from models.engine.db_storage import DBStorage
 import models
 
+
 class TestBaseModel(unittest.TestCase):
     """Unittests for testing the BaseModel class."""
 
@@ -57,7 +58,7 @@ class TestBaseModel(unittest.TestCase):
         """ """
         i = BaseModel()
         self.assertEqual(str(i), '[{}] ({}) {}'.format('BaseModel', i.id,
-                         i.__dict__))
+                                                       i.__dict__))
 
     def test_todict(self):
         """ """

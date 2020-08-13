@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" """
+""" test user file """
 from models.user import User
 import unittest
 from models.city import City
@@ -103,6 +103,7 @@ class TestUser(unittest.TestCase):
         """test if dictionary works"""
         us = User()
         self.assertEqual('to_dict' in dir(us), True)
+
 
 if __name__ == "__main__":
     unittest.main(defaultTest="TestBaseModel", exit=False)
