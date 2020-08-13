@@ -43,7 +43,7 @@ class test_fileStorage(unittest.TestCase):
             os.remove("file.json")
         except IOError:
             pass
-    
+
     def setUp(self):
         """ Set up test environment """
         # del_list = []
@@ -252,7 +252,6 @@ class test_fileStorage(unittest.TestCase):
         fs.reload()
         store = FileStorage._FileStorage__objects
         self.assertIn("BaseModel." + bm.id, store)
-
 
     def test_delete(self):
         """Test delete method."""
