@@ -11,6 +11,8 @@ import os
 from datetime import datetime
 from models.base_model import Base
 from sqlalchemy.orm import sessionmaker
+from time import sleep
+from tests.test_models.test_base_model import TestBaseModel
 NoneType = type(None)
 
 
@@ -76,6 +78,7 @@ class TestAmenity(unittest.TestCase):
     def test_save_Amenity(self):
         """test if the save works"""
         am = Amenity()
+        sleep(0.6)
         am.save()
         self.assertNotEqual(am.created_at, am.updated_at)
 

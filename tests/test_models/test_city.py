@@ -10,6 +10,8 @@ from models.engine.db_storage import DBStorage
 from models.engine.file_storage import FileStorage
 import os
 import pep8
+from time import sleep
+from tests.test_models.test_base_model import TestBaseModel
 NoneType = type(None)
 
 
@@ -83,6 +85,7 @@ class TestCity(unittest.TestCase):
     def test_save_City(self):
         """test if the save works"""
         ct = City()
+        sleep(0.6)
         ct.save()
         self.assertNotEqual(ct.created_at, ct.updated_at)
 
@@ -90,3 +93,6 @@ class TestCity(unittest.TestCase):
         """test to_dict"""
         ct = City()
         self.assertTrue('to_dict' in dir(ct))
+
+if __name__ == "__main__":
+    unittest.main()

@@ -11,6 +11,8 @@ from models.engine.db_storage import DBStorage
 from models.engine.file_storage import FileStorage
 import os
 import pep8
+from time import sleep
+from tests.test_models.test_base_model import TestBaseModel
 NoneType = type(None)
 
 
@@ -93,6 +95,7 @@ class TestUser(unittest.TestCase):
     def test_save_User(self):
         """test if the save works"""
         us = User()
+        sleep(0.6)
         us.save()
         self.assertNotEqual(us.created_at, us.updated_at)
 
@@ -100,3 +103,6 @@ class TestUser(unittest.TestCase):
         """test if dictionary works"""
         us = User()
         self.assertEqual('to_dict' in dir(us), True)
+
+if __name__ == "__main__":
+    unittest.main(defaultTest="TestBaseModel", exit=False)
