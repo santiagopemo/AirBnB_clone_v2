@@ -89,6 +89,7 @@ class TestState(unittest.TestCase):
         st.save()
         self.assertNotEqual(st.created_at, st.updated_at)
 
+    @unittest.skipIf(type(models.storage) is DBStorage, "Filestorage")
     def test_to_dict(self):
         """test to_dict"""
         st = State()
