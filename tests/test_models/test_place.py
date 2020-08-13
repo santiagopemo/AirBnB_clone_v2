@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" """
+""" test place file """
 from models.place import Place
 import unittest
 from models.city import City
@@ -154,6 +154,7 @@ class TestPlace(unittest.TestCase):
                          place_dict["created_at"])
         self.assertEqual(pl.updated_at.isoformat(),
                          place_dict["updated_at"])
+
 
 if __name__ == "__main__":
     unittest.main(defaultTest="TestBaseModel", exit=False)

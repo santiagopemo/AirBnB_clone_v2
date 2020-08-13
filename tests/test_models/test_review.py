@@ -1,8 +1,5 @@
 #!/usr/bin/python3
-
-'''
-    All the test for the user model are implemented here.
-'''
+""" test review file """
 from models.place import Place
 import unittest
 from models.city import City
@@ -109,6 +106,7 @@ class TestReview(unittest.TestCase):
                          review_dict["created_at"])
         self.assertEqual(new_review.updated_at.isoformat(),
                          review_dict["updated_at"])
+
 
 if __name__ == "__main__":
     unittest.main(defaultTest="TestBaseModel", exit=False)

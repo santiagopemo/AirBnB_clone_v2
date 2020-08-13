@@ -14,6 +14,7 @@ HBNB = HBNBCommand()
 
 class TestConsole(unittest.TestCase):
     """TestConsole Class"""
+
     def setUp(self):
         """Executes before a test case"""
         FileStorage._FileStorage__objects = {}
@@ -84,6 +85,7 @@ class TestConsole(unittest.TestCase):
         with patch("sys.stdout", new=StringIO()) as f:
             HBNB.onecmd("show User {}".format(us))
             self.assertIn("'first_name': 'Santiago'", f.getvalue())
+
 
 if __name__ == "__main__":
     unittest.main()

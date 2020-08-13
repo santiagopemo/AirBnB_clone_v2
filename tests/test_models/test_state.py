@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" """
+""" test state file """
 from models.state import State
 import unittest
 from models.city import City
@@ -102,6 +102,7 @@ class TestState(unittest.TestCase):
                          state_dict["created_at"])
         self.assertEqual(st.updated_at.isoformat(),
                          state_dict["updated_at"])
+
 
 if __name__ == "__main__":
     unittest.main(defaultTest="TestBaseModel", exit=False)

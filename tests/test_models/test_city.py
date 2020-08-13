@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" """
+""" test city file """
 import unittest
 from models.city import City
 from models.base_model import BaseModel
@@ -42,7 +42,6 @@ class TestCity(unittest.TestCase):
     def tearDown(self):
         """executes before a test"""
         pass
-
 
     def test_state_id(self):
         """ """
@@ -93,6 +92,7 @@ class TestCity(unittest.TestCase):
         """test to_dict"""
         ct = City()
         self.assertTrue('to_dict' in dir(ct))
+
 
 if __name__ == "__main__":
     unittest.main()
