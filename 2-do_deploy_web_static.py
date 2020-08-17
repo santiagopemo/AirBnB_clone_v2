@@ -23,8 +23,8 @@ def do_deploy(archive_path):
         api.run("tar -xzf /tmp/{} -C /data/web_static/releases/{}".format(
                                                         file_name, just_name))
         api.run("rm /tmp/{}".format(file_name))
-        path = "/data/web_static/releases/"
-        run('mv {0}{1}/web_static/* {0}{1}/'.format(path, just_name))
+        path_r = "/data/web_static/releases/"
+        run('mv {0}{1}/web_static/* {0}{1}/'.format(path_r, just_name))
         run('rm -rf /data/web_static/releases/{}/web_static'.format(just_name))
         api.run("rm -rf /data/web_static/current")
         api.run("ln -s /data/web_static/releases/{} \
