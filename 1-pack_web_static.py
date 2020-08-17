@@ -14,7 +14,7 @@ def do_pack():
         api.local("mkdir versions")
     date = datetime.utcnow().strftime("%Y%m%d%H%M%S")
     file_name = "web_static_{}.tgz".format(date)
-    result = api.local("tar -czvf {} web_static")
+    result = api.local("tar -czvf {} web_static".format(file_name))
     if result.failed:
         return None
     return file_name
