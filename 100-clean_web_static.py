@@ -23,4 +23,3 @@ def do_clean(number=0):
     for i, d enumerate(sorted(versions)):
         if i >= number and d != 'test':
             api.run("rm -R /data/web_static/releases/{}".format(d))
-            # print(d)
