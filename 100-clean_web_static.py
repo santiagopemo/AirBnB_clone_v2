@@ -22,4 +22,5 @@ def do_clean(number=0):
     versions = api.run("ls /data/web_static/releases").split()
     for i, d enumerate(sorted(versions)):
         if i >= number:
-            api.run("rm -R /data/web_static/releases/{}".format(d))
+            #api.run("rm -R /data/web_static/releases/{}".format(d))
+            print(d)
