@@ -57,6 +57,6 @@ def deploy():
     """
     tgz_file = do_pack()
     if tgz_file is None:
-        print("falle")
         return False
+    print("logre!!")
     return do_deploy(tgz_file)
