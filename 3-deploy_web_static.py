@@ -29,8 +29,10 @@ def do_deploy(archive_path):
     an archive to your web servers, using the function do_deploy
     """
     if not path.exists(archive_path):
+        print("falle")
         return False
     try:
+        print("logre")
         file_name = archive_path.split("/")[-1]
         just_name = file_name.split(".")[0]
         api.put(archive_path, "/tmp/")
@@ -59,4 +61,5 @@ def deploy():
     if tgz_file is None:
         return False
     result_d = do_deploy(tgz_file)
+    print(tgz_file)
     return result_d
