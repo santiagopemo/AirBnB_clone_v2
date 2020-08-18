@@ -16,10 +16,20 @@ def do_clean(number=0):
     number = int(number)
     if number == 0:
         number = 1
-    for i, d in enumerate(sorted(os.listdir("versions"))):
-        if i >= number:
-            api.local("rm /versions/{}".format(d))
-    versions = api.run("ls -tr /data/web_static/releases").split()
-    for i, d in enumerate(versions):
-        if i >= number and d:
-            api.run("rm -R /data/web_static/releases/{}".format(d))
+    tgz_files = sorted(os.listdir("versions"))
+    for f in range(number):
+        tgz_files.pop()
+    with api.lcd("versions"):
+        for f in tgz_files:
+            api.local("rm {}".format(f))
+
+    with cd("/data/web_static/releases"):
+        versions_files = api.run("ls -tr").split()
+        tgz_files = []
+        for f in versions_files:
+            if "web_static" in f:
+                tgz_files.append(f)
+        for f in range(number):
+            tgz_files.pop()
+        for f in tgz_files:
+            api.run("rm -rf ./{}".format(f))
