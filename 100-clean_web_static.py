@@ -18,10 +18,8 @@ def do_clean(number=0):
         number = 1
     for i, d in enumerate(sorted(os.listdir("versions"))):
         if i >= number:
-            # api.local("rm /versions/{}".format(d))
-            print(d)
+            api.local("rm /versions/{}".format(d))
     versions = api.run("ls -tr /data/web_static/releases").split()
     for i, d in enumerate(versions):
         if i >= number and d:
-            # api.run("rm -R /data/web_static/releases/{}".format(d))
-            print(d)
+            api.run("rm -R /data/web_static/releases/{}".format(d))
