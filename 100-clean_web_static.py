@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """Do clean web static module"""
 from datetime import datetime
-from os import listdir
+from os
 from fabric import api
 
 api.env.user = 'ubuntu'
@@ -16,11 +16,11 @@ def do_clean(number=0):
     number = int(number)
     if number == 0:
         number = 1
-    for i, d in enumerate(sorted(listdir("versions"))):
+    for i, d in enumerate(sorted(os.listdir("versions"))):
         if i >= number:
             api.local("rm /versions/{}".format(d))
     versions = api.run("ls /data/web_static/releases").split()
     for i, d enumerate(sorted(versions)):
-        if i >= number:
-            #api.run("rm -R /data/web_static/releases/{}".format(d))
-            print(d)
+        if i >= number and d != 'test':
+            api.run("rm -R /data/web_static/releases/{}".format(d))
+            # print(d)
