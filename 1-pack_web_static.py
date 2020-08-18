@@ -13,8 +13,8 @@ def do_pack():
     if not path.isdir("versions"):
         api.local("mkdir versions")
     date = datetime.utcnow().strftime("%Y%m%d%H%M%S")
-    file_name = "web_static_{}.tgz".format(date)
-    result = api.local("tar -czvf versions/{} web_static".format(file_name))
+    file_name = "versions/web_static_{}.tgz".format(date)
+    result = api.local("tar -czvf {} web_static".format(file_name))
     if result.failed:
         return None
     return file_name
