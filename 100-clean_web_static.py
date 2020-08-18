@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """Do clean web static module"""
 from datetime import datetime
-from os
+import os
 from fabric import api
 
 api.env.user = 'ubuntu'
