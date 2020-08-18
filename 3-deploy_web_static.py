@@ -16,11 +16,11 @@ def do_pack():
     if not path.isdir("versions"):
         api.local("mkdir versions")
     date = datetime.utcnow().strftime("%Y%m%d%H%M%S")
-    file_name = "web_static_{}.tgz".format(date)
-    result = api.local("tar -czvf versions/{} web_static".format(file_name))
+    t_name = "web_static_{}.tgz".format(date)
+    result = api.local("tar -czvf versions/{} web_static".format(t_name))
     if result.failed:
         return None
-    return file_name
+    return t_name
 
 
 def do_deploy(archive_path):
