@@ -25,7 +25,7 @@ exec { 'mkdir2':
 file { 'index':
   ensure  => 'present',
   path    => '/data/web_static/releases/test/index.html',
-  content => "Holberton School web_static",
+  content => 'Holberton School web_static',
   require => Exec['mkdir2'],
 }
 
@@ -42,32 +42,15 @@ exec { 'chown':
   require => File['current'],
 }
 
-file_line { 'location1':
-  ensure  => present,
-  path    => '/etc/nginx/sites-available/default',
-  after   => 'listen 80 default_server;',
-  line    => 'location /hbnb_static/ {',
-  require => Exec['chown'],
-}
-
-file_line { 'location2':
-  ensure  => present,
-  path    => '/etc/nginx/sites-available/default',
-  after   => 'location /hbnb_static/ {',
-  line    => 'alias /data/web_static/current/;',
-  require => File_line['location1'],
-}
-
-file_line { 'location3':
-  ensure  => present,
-  path    => '/etc/nginx/sites-available/default',
-  after   => 'alias /data/web_static/current/;',
-  line    => '}',
-  require => File_line['location2'],
+exec { 'chown':
+  command => 'sudo sed -i "/:80 default_server/ a \\\tlocation /hbnb_static/ {\n\t\talias /data/web_static/current/;\n\t}" \
+/etc/nginx/sites-available/default',
+  path    => ['/usr/bin', '/bin'],
+  require => exec['chown'],
 }
 
 exec { 'restart':
   command => 'sudo service nginx restart',
   path    => ['/usr/bin', '/bin'],
-  require => File_line['location'],
+  require => File_line['location1'],
 }
