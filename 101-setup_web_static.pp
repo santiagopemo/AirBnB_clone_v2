@@ -52,5 +52,5 @@ exec { 'chown':
 exec { 'restart':
   command => 'sudo service nginx restart',
   path    => ['/usr/bin', '/bin'],
-  require => File_line['location1'],
+  require => exec['location1'],
 }
