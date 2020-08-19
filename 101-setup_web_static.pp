@@ -17,7 +17,7 @@ file { '/data/web_static/releases/test':
 
 file { '/data/web_static/shared':
   ensure  => directory,
-  require => Package['/data/web_static/releases/test/'],
+  require => Package['/data/web_static/releases/test'],
 }
 
 file { 'index':
