@@ -10,23 +10,21 @@ package { 'nginx':
   require => Exec['update'],
 }
 
-exec { 'mkdir1':
-  command => 'sudo mkdir -p /data/web_static/releases/test/',
-  path    => ['/usr/bin', '/bin'],
+file { '/data/web_static/releases/test':
+  ensure  => directory,
   require => Package['nginx'],
 }
 
-exec { 'mkdir2':
-  command => 'sudo mkdir -p /data/web_static/shared/',
-  path    => ['/usr/bin', '/bin'],
-  require => Exec['mkdir1'],
+file { '/data/web_static/shared':
+  ensure  => directory,
+  require => Package['/data/web_static/releases/test/'],
 }
 
 file { 'index':
   ensure  => 'present',
   path    => '/data/web_static/releases/test/index.html',
   content => 'Holberton School web_static',
-  require => Exec['mkdir2'],
+  require => File['/data/web_static/shared'],
 }
 
 file { 'current':
