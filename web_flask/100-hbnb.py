@@ -4,6 +4,7 @@ from models import storage
 from flask import Flask, render_template
 from models.state import State
 from models.amenity import Amenity
+from models.place import Place
 app = Flask(__name__)
 
 
@@ -11,13 +12,6 @@ app = Flask(__name__)
 def teardown_db(db):
     """Remove the current SQLAlchemy Session"""
     storage.close()
-
-
-@app.route('/states_list', strict_slashes=False)
-def states_list():
-    """Display states"""
-    states = storage.all(State).values()
-    return render_template('7-states_list.html', states=states)
 
 
 @app.route('/cities_by_states', strict_slashes=False)
@@ -54,6 +48,19 @@ def states_list():
     amenities = storage.all(Amenity).values()
     return render_template(
         '10-hbnb_filters.html', states=states, amenities=amenities)
+
+
+@app.route('/hbnb', strict_slashes=False)
+def states_list():
+    """Display states"""
+    states = storage.all(State).values()
+    amenities = storage.all(Amenity).values()
+    places = storage.all(Place).values()
+    return render_template(
+        '10-hbnb_filters.html',
+        states=states,
+        amenities=amenities,
+        places=places)
 
 
 if __name__ == '__main__':
