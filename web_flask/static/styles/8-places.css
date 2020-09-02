@@ -32,6 +32,11 @@
     display: flex;
     width: auto;
     height: auto;
+    margin: 0 auto;
+    text-align: center;
+    -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+            box-sizing: border-box;
 }
 .price_by_night {
     color: #FF5A5F;
