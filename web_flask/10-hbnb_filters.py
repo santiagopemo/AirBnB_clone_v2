@@ -48,7 +48,7 @@ def states_by_id(id):
 
 
 @app.route('/hbnb_filters', strict_slashes=False)
-def states_list():
+def hbnb_filters():
     """Display states"""
     states = storage.all(State).values()
     amenities = storage.all(Amenity).values()

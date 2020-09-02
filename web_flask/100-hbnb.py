@@ -42,7 +42,7 @@ def states_by_id(id):
 
 
 @app.route('/hbnb_filters', strict_slashes=False)
-def states_list():
+def hbnb_filters():
     """Display states"""
     states = storage.all(State).values()
     amenities = storage.all(Amenity).values()
@@ -51,7 +51,7 @@ def states_list():
 
 
 @app.route('/hbnb', strict_slashes=False)
-def states_list():
+def hbnb_is_alive():
     """Display states"""
     states = storage.all(State).values()
     amenities = storage.all(Amenity).values()
