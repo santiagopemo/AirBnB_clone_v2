@@ -19,15 +19,19 @@
     border-radius: 4px;
     display: flex;
     flex-direction: column;
-    position: relative;
+}
+.places .place_header {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    padding-bottom: 20px;
 }
 .places article h2 {
     font-size: 30px;
     margin: 0;
     padding: 0;
     display: flex;
-    justify-content: center;
-    margin-bottom: 30px;
+    margin: 0 auto;
 }
 .price_by_night {
     color: #FF5A5F;
@@ -39,9 +43,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    position: absolute;
-    top: 10px;
-    right: 22px;
+    margin-left: 20px;
 }
 .information {
     height: 80px;
