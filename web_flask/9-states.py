@@ -27,16 +27,23 @@ def cities_by_states():
 
 
 @app.route('/states', strict_slashes=False)
-@app.route('/states/<id>', strict_slashes=False)
-def states_by_id(id=None):
-    """Display states and cities"""
+def states():
+    """Display states"""
     states = storage.all(State).values()
-    if id is None:
-        return render_template('8-states.html', states=state)
+    return render_template('9-states.html', states=states)
+
+
+@app.route('/states/<id>', strict_slashes=False)
+def states_by_id(id):
+    """Display states"""
+    states = storage.all(State).values()
+    finded = False
     for state in states:
         if id == state.id:
-            return render_template('8-states.html', states=[state])
-    return render_template('8-states.html', states=None)
+            finded = True
+            return render_template(
+                '9-states.html', states=state, finded=finded)
+    return render_template('9-states.html', states=states, finded=finded)
 
 
 if __name__ == '__main__':
